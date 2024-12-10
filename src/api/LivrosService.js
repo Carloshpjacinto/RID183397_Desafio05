@@ -4,7 +4,7 @@ const BASE_URL = "http://localhost:3000"
 
 export class LivrosService{
     static getLivros(){
-        return axios.get(BASE_URL+'/livros');
+        return axios.get(`${BASE_URL}/livros`);
     }
 
     static getLivro(id){
@@ -22,5 +22,4 @@ export class LivrosService{
     static deleteLivro(id){
         return axios.delete(`${BASE_URL}/livros/${id}`);
     }
-    
 }
