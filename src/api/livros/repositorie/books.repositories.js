@@ -1,7 +1,7 @@
 import { bancoDeDados } from "../../config/database/data-source.js"
 
 bancoDeDados.run(`CREATE TABLE IF NOT EXISTS books (
-        id INTEGER NOT NULL,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         titulo TEXT NOT NULL,
         num_paginas INTEGER NOT NULL,
         isbn TEXT NOT NULL,
@@ -30,10 +30,10 @@ function createBookRepository(newBook){
 
     return new Promise((resolve, reject) => {
 
-        const {id, titulo, num_paginas, isbn, editora} = newBook
+        const {titulo, num_paginas, isbn, editora} = newBook
 
-        bancoDeDados.run(`INSERT INTO books (id, titulo, num_paginas, isbn, editora) VALUES (?, ?, ?, ?, ?)`,
-            [id, titulo, num_paginas, isbn, editora],
+        bancoDeDados.run(`INSERT INTO books (titulo, num_paginas, isbn, editora) VALUES (?, ?, ?, ?)`,
+            [titulo, num_paginas, isbn, editora],
 
             function (err){
 

@@ -12,18 +12,17 @@ const LivrosCadastro = () => {
 
     event.preventDefault();
 
-    const { id, titulo, num_paginas, isbn, editora } = livro;
+    const {titulo, num_paginas, isbn, editora } = livro;
 
     const body = {
 
-      id:Number(id),
       titulo,
       num_paginas: Number(num_paginas),
       isbn,
       editora
     }
 
-    if(!id || !titulo || !num_paginas || !isbn || !editora){
+    if(!titulo || !num_paginas || !isbn || !editora){
 
       alert("Todos os campos são Obrigatorios");
       return;
@@ -31,10 +30,10 @@ const LivrosCadastro = () => {
 
     try{
 
-      const response =  await LivrosService.createLivro(body);
+      await LivrosService.createLivro(body);
       alert("Livro cadastrado com sucesso!")
       document.getElementById("formulario").reset();
-      setLivro({ id: '', titulo: '', num_paginas: '', isbn: '', editora: '' });
+      setLivro({titulo: '', num_paginas: '', isbn: '', editora: '' });
 
     }catch(err){
 
@@ -52,7 +51,7 @@ const LivrosCadastro = () => {
           <form id="formulario" onSubmit={createLivro}>
           <div className='form-group'>
             <label>Id</label>
-            <input type="text" id='id' value={livro.id} required onChange={(event)=>{ setLivro({...livro, id: event.target.value})}} ></input>
+            <input type="text" id='id'></input>
           </div>
           <div className='form-group'>
             <label>Titulo</label>
