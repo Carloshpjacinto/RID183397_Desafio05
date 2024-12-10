@@ -1,6 +1,6 @@
 import sqlite3 from 'sqlite3'
 
-export const bancoDeDados = new sqlite3.Database("livro_DB.sqlite", (err) =>{
+export const database = new sqlite3.Database("livro_DB.sqlite", (err) =>{
 
     if(err){
 

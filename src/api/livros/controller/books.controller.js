@@ -30,4 +30,20 @@ async function createBookController(req, res) {
     }
 }
 
-export default {findAllBooksController, createBookController}
+async function deleteBookController(req, res) {
+    
+    try{
+
+        const idBook = req.params.id;
+
+        await bookService.deleteBookService(idBook)
+    
+        res.status(200)
+
+    }catch(e){
+
+        res.status(400).send(e.message)
+    }
+}
+
+export default {findAllBooksController, createBookController, deleteBookController}

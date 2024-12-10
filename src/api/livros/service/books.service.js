@@ -14,4 +14,11 @@ async function createBookService(newBook) {
     return books
 }
 
-export default {findAllBooksService, createBookService}
+async function deleteBookService(idBook) {
+    
+    const book = await bookRepositories.deleteBookRepository(idBook)
+
+    return {message: "Livro deletado com sucesso!"}
+}
+
+export default {findAllBooksService, createBookService, deleteBookService}

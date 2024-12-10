@@ -1,6 +1,6 @@
-import { bancoDeDados } from "../../config/database/data-source.js"
+import { database } from "../../config/database/data-source.js"
 
-bancoDeDados.run(`CREATE TABLE IF NOT EXISTS books (
+database.run(`CREATE TABLE IF NOT EXISTS books (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         titulo TEXT NOT NULL,
         num_paginas INTEGER NOT NULL,
@@ -12,7 +12,7 @@ function findAllBooksRepository(){
 
     return new Promise((resolve, reject) => {
 
-        bancoDeDados.all(`SELECT * FROM books`, [], (err, rows) =>{
+        database.all(`SELECT * FROM books`, [], (err, rows) =>{
 
             if(err){
 
@@ -32,7 +32,7 @@ function createBookRepository(newBook){
 
         const {titulo, num_paginas, isbn, editora} = newBook
 
-        bancoDeDados.run(`INSERT INTO books (titulo, num_paginas, isbn, editora) VALUES (?, ?, ?, ?)`,
+        database.run(`INSERT INTO books (titulo, num_paginas, isbn, editora) VALUES (?, ?, ?, ?)`,
             [titulo, num_paginas, isbn, editora],
 
             function (err){
@@ -50,4 +50,26 @@ function createBookRepository(newBook){
     })
 }
 
-export default {findAllBooksRepository, createBookRepository}
+function deleteBookRepository(idBook){
+
+    return new Promise((resolve, reject) => {
+
+        database.run(`DELETE FROM books WHERE id = ?`,
+            [idBook],
+            
+            function(err){
+
+                if(err){
+
+                    reject(err)
+
+                }else{
+
+                    resolve({message: "Livro deletado com sucesso!"})
+                }
+            }
+        )
+    })
+}
+
+export default {findAllBooksRepository, createBookRepository, deleteBookRepository}

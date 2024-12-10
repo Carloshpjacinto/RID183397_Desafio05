@@ -3,7 +3,7 @@ import Header from '../../components/Header/Header'
 import "./index.scss"
 import SubmenuLivros from '../../components/SubmenuLivros/SubmenuLivros'
 import { useParams } from 'react-router-dom'
-import { LivrosService } from '../../api/LivrosService'
+import { LivrosService } from '../../api/axios/LivrosService'
 
 const LivrosEdicao = () => {  
   let {livroId} = useParams();

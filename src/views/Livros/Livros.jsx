@@ -2,7 +2,7 @@ import {useEffect , useState} from 'react'
 import Header from '../../components/Header/Header'
 import "./index.scss"
 import SubmenuLivros from '../../components/SubmenuLivros/SubmenuLivros'
-import { LivrosService } from '../../api/LivrosService'
+import { LivrosService } from '../../api/axios/LivrosService'
 import {Link} from "react-router-dom"
 
 const Livros = () => {
@@ -18,8 +18,8 @@ const Livros = () => {
     let valida = confirm(`Você realmente deseja remover o livro de ID: ${livroId}`);
     if(valida){
       await LivrosService.deleteLivro(livroId)
-      .then(({data}) => {
-        alert(data.mensagem)
+      .then(() => {
+        alert("Livro deletado com sucesso!")
         getLivros()
       })
       .catch(({response:{data,status}})=>{
