@@ -14,11 +14,11 @@ async function createBookService(newBook) {
     return books
 }
 
-async function updateBookService(idBook, books) {
+async function updateBookService(idBook, book) {
+    
+    const updateBook = await bookRepositories.updateBookRepository(idBook, book)
 
-    const book = await bookRepositories.createBookRepository(idBook, books)
-
-    return book
+    return updateBook
 }
 
 async function deleteBookService(idBook) {

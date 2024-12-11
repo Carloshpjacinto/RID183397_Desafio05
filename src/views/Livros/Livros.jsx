@@ -10,6 +10,7 @@ const Livros = () => {
   const [livros, setLivros] = useState([])
 
   async function getLivros(){
+
     const {data} = await LivrosService.getLivros();
     setLivros(data)
   }
@@ -29,8 +30,10 @@ const Livros = () => {
   }
 
   useEffect(() => {
+
     getLivros()    
-  },[])  
+
+  },[livros])  
 
   return (
   <>
