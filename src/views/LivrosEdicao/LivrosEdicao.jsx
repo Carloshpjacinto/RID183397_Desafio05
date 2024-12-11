@@ -26,20 +26,21 @@ const LivrosEdicao = () => {
     if(livro.id!=undefined && livro.id!='' && livro.titulo!=undefined && livro.titulo!='' && livro.num_paginas!=undefined && livro.num_paginas!='' && livro.isbn !=undefined && livro.isbn !='' && livro.editora !=undefined && livro.editora !=''){
       await LivrosService.updateLivro(Number(livro.id),body)
       .then(({data})=>{
-        alert(data.mensagem)
-      })
-      .catch(({response:{data,status}})=>{
-        alert(`${status} - ${data}`)      
-      });
-    }  
 
+        alert(data.mensagem)
+
+      }).catch(({response:{data,status}})=>{
+
+        alert(`${status} - ${data}`)      
+      }
+    )};  
   }
 
   useEffect(() => {
 
     getLivro()
     document.getElementById("id").value = id
-  }, [0])  
+  }, [])  
 
   return (
   <>
@@ -55,7 +56,7 @@ const LivrosEdicao = () => {
             </div>
             <div className='form-group'>
               <label>Titulo</label>
-              <input type="text" id='titulo' onChange={(event)=>{ setLivro({...livro, titulo: event.target.value})}} value={livro.titulo} ></input>
+              <input type="text" id='titulo' onChange={(event)=>{ setLivro({...livro, titulo: event.target.value})}} value={livro.titulo}></input>
             </div>
             <div className='form-group'>
               <label>Número de Páginas</label>
