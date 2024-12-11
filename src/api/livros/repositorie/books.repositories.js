@@ -50,6 +50,59 @@ function createBookRepository(newBook){
     })
 }
 
+function updateBookRepository(idBook, books){
+
+    return new Promise((resolve, reject) => {
+
+        const {titulo, num_paginas, isbn, editora} = books
+
+        let query = "UPDATE books SET"
+
+        const values = [];
+
+        if(titulo != undefined){
+
+            query  += " titulo = ?,"
+            values.push(titulo)
+        }
+
+        if(num_paginas != undefined){
+
+            query += " num_paginas = ?,"
+            values.push(num_paginas)
+        }
+
+        if(isbn != undefined){
+
+            query += " isbn = ?,"
+            values.push(isbn)
+        }
+
+        if(editora != undefined){
+
+            query += " editora = ?,"
+            values.push(editora)
+        }
+
+        query = query.slice(0, -1)
+
+        query += " WHERE id = ?"
+        values.push(idBook)
+
+        database.run(query, values, function(err){
+
+            if(err){
+
+                reject(err)
+
+            }else{
+
+                resolve(books)
+            }
+        })
+    })
+}
+
 function deleteBookRepository(idBook){
 
     return new Promise((resolve, reject) => {
@@ -72,4 +125,4 @@ function deleteBookRepository(idBook){
     })
 }
 
-export default {findAllBooksRepository, createBookRepository, deleteBookRepository}
+export default {findAllBooksRepository, createBookRepository, updateBookRepository, deleteBookRepository}

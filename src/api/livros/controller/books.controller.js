@@ -15,6 +15,24 @@ async function findAllBooksController(req, res) {
 }
 
 async function createBookController(req, res) {
+
+    try{
+
+        const book = req.body;
+
+        const idBook = req.params.id
+
+        const response = await bookService.updateBookService(book, idBook);
+
+        res.send(response)
+
+    }catch(e){
+
+        res.status(400).send(e.message)
+    }
+}
+
+async function updateBookController(req, res) {
     
     const newBook = req.body;
 
@@ -46,4 +64,4 @@ async function deleteBookController(req, res) {
     }
 }
 
-export default {findAllBooksController, createBookController, deleteBookController}
+export default {findAllBooksController, createBookController, updateBookController, deleteBookController}

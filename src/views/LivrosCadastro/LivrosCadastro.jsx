@@ -1,7 +1,6 @@
 import {useState} from 'react'
 import Header from '../../components/Header/Header'
 import "./index.scss"
-import SubmenuLivros from '../../components/SubmenuLivros/SubmenuLivros'
 import { LivrosService } from '../../api/axios/LivrosService'
 
 const LivrosCadastro = () => {
@@ -43,8 +42,7 @@ const LivrosCadastro = () => {
 
   return (
   <>
-    <Header/>    
-    <SubmenuLivros/>
+    <Header/>
     <div className='livrosCadastro'>
         <h1>Cadastro de Livros</h1>
         <div>          
@@ -75,8 +73,7 @@ const LivrosCadastro = () => {
           </form>
         </div>
     </div>
-  </>)
-  
+  </>) 
 }
 
 export default LivrosCadastro

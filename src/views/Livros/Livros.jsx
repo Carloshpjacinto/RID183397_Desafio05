@@ -65,7 +65,6 @@ const Livros = () => {
         </ul>
     </div>
   </>)
-  
 }
 
 export default Livros
