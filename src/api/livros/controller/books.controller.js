@@ -16,13 +16,11 @@ async function findAllBooksController(req, res) {
 
 async function createBookController(req, res) {
 
+    const book = req.body;
+
     try{
 
-        const book = req.body;
-
-        const idBook = req.params.id
-
-        const response = await bookService.updateBookService(book, idBook);
+        const response = await bookService.createBookService(book);
 
         res.send(response)
 
@@ -33,14 +31,16 @@ async function createBookController(req, res) {
 }
 
 async function updateBookController(req, res) {
-    
-    const newBook = req.body;
 
     try{
 
-        const book = await bookService.createBookService(newBook);
+        const book = req.body;
 
-        res.status(201).send(book)
+        const idBook = req.params.id;
+
+        const response = await bookService.updateBookService(idBook, book);
+
+        res.send(response)
 
     }catch(e){
 

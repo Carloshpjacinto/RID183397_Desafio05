@@ -50,11 +50,11 @@ function createBookRepository(newBook){
     })
 }
 
-function updateBookRepository(idBook, books){
+function updateBookRepository(idBook, book){
 
     return new Promise((resolve, reject) => {
 
-        const {titulo, num_paginas, isbn, editora} = books
+        const {titulo, num_paginas, isbn, editora} = book
 
         let query = "UPDATE books SET"
 
@@ -62,7 +62,7 @@ function updateBookRepository(idBook, books){
 
         if(titulo != undefined){
 
-            query  += " titulo = ?,"
+            query += " titulo = ?,"
             values.push(titulo)
         }
 
@@ -87,7 +87,7 @@ function updateBookRepository(idBook, books){
         query = query.slice(0, -1)
 
         query += " WHERE id = ?"
-        values.push(idBook)
+        values.push(Number(idBook))
 
         database.run(query, values, function(err){
 
@@ -97,7 +97,7 @@ function updateBookRepository(idBook, books){
 
             }else{
 
-                resolve(books)
+                resolve(book)
             }
         })
     })
