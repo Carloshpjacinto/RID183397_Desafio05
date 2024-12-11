@@ -1,31 +1,38 @@
-import bookRepositories from "../repositorie/books.repositories.js"
+import booksRepositories from "../repositorie/books.repositories.js"
 
 async function findAllBooksService() {
     
-    const allBooks = await bookRepositories.findAllBooksRepository()
+    const allBooks = await booksRepositories.findAllBooksRepository()
 
     return allBooks
 }
 
-async function createBookService(newBook) {
+async function findIdBooksService(idBook) {
+    
+    const idBooks = await booksRepositories.findIdBooksRepository(idBook)
 
-    const books = await bookRepositories.createBookRepository(newBook)
+    return idBooks
+}
+
+async function createBooksService(newBook) {
+
+    const books = await booksRepositories.createBooksRepository(newBook)
 
     return books
 }
 
-async function updateBookService(idBook, book) {
+async function updateBooksService(idBook, book) {
     
-    const updateBook = await bookRepositories.updateBookRepository(idBook, book)
+    const updateBook = await booksRepositories.updateBooksRepository(idBook, book)
 
     return updateBook
 }
 
-async function deleteBookService(idBook) {
+async function deleteBooksService(idBook) {
     
-    const book = await bookRepositories.deleteBookRepository(idBook)
+    const book = await booksRepositories.deleteBooksRepository(idBook)
 
     return {message: "Livro deletado com sucesso!"}
 }
 
-export default {findAllBooksService, createBookService, updateBookService, deleteBookService}
+export default {findAllBooksService, findIdBooksService, createBooksService, updateBooksService, deleteBooksService}

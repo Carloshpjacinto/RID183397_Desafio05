@@ -25,8 +25,28 @@ function findAllBooksRepository(){
         })
     })
 }
+
+function findIdBooksRepository(idBook){
+
+    return new Promise((resolve, reject) => {
+
+        database.all(`SELECT * FROM books WHERE id = ?`,
+            [idBook],
+            (err, rows) => {
+
+            if(err){
+
+                reject(err);
+
+            }else{
+
+                resolve(rows);
+            }
+        })
+    })
+}
     
-function createBookRepository(newBook){
+function createBooksRepository(newBook){
 
     return new Promise((resolve, reject) => {
 
@@ -50,7 +70,7 @@ function createBookRepository(newBook){
     })
 }
 
-function updateBookRepository(idBook, book){
+function updateBooksRepository(idBook, book){
 
     return new Promise((resolve, reject) => {
 
@@ -103,7 +123,7 @@ function updateBookRepository(idBook, book){
     })
 }
 
-function deleteBookRepository(idBook){
+function deleteBooksRepository(idBook){
 
     return new Promise((resolve, reject) => {
 
@@ -125,4 +145,4 @@ function deleteBookRepository(idBook){
     })
 }
 
-export default {findAllBooksRepository, createBookRepository, updateBookRepository, deleteBookRepository}
+export default {findAllBooksRepository, findIdBooksRepository, createBooksRepository, updateBooksRepository, deleteBooksRepository}

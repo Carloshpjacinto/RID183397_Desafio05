@@ -21,7 +21,7 @@ export class LivrosService{
 
     static updateLivro(id,body){
 
-        return axios.patch(`${BASE_URL}/livros/${id}`,body);
+        return axios.put(`${BASE_URL}/livros/${id}`,body);
     }
 
     static deleteLivro(id){

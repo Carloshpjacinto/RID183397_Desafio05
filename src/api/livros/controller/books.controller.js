@@ -1,10 +1,10 @@
-import bookService from "../service/books.service.js"
+import booksService from "../service/books.service.js"
 
 async function findAllBooksController(req, res) {
     
     try{
 
-        const books = await bookService.findAllBooksService();
+        const books = await booksService.findAllBooksService();
 
         res.send(books);
 
@@ -14,13 +14,29 @@ async function findAllBooksController(req, res) {
     }
 }
 
-async function createBookController(req, res) {
+async function findIdBooksController(req, res) {
+    
+    try{
+
+        const idBook = req.params.id;
+
+        const books = await booksService.findIdBooksService(idBook);
+
+        res.send(books);
+
+    }catch(e){
+
+        res.status(404).send(message)
+    }
+}
+
+async function createBooksController(req, res) {
 
     const book = req.body;
 
     try{
 
-        const response = await bookService.createBookService(book);
+        const response = await booksService.createBooksService(book);
 
         res.send(response)
 
@@ -30,7 +46,7 @@ async function createBookController(req, res) {
     }
 }
 
-async function updateBookController(req, res) {
+async function updateBooksController(req, res) {
 
     try{
 
@@ -38,7 +54,7 @@ async function updateBookController(req, res) {
 
         const idBook = req.params.id;
 
-        const response = await bookService.updateBookService(idBook, book);
+        const response = await booksService.updateBooksService(idBook, book);
 
         res.send(response)
 
@@ -48,13 +64,13 @@ async function updateBookController(req, res) {
     }
 }
 
-async function deleteBookController(req, res) {
+async function deleteBooksController(req, res) {
     
     try{
 
         const idBook = req.params.id;
 
-        await bookService.deleteBookService(idBook)
+        await booksService.deleteBooksService(idBook)
     
         res.status(200)
 
@@ -64,4 +80,4 @@ async function deleteBookController(req, res) {
     }
 }
 
-export default {findAllBooksController, createBookController, updateBookController, deleteBookController}
+export default {findAllBooksController, findIdBooksController, createBooksController, updateBooksController, deleteBooksController}
