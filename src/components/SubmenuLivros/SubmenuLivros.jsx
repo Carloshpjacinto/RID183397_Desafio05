@@ -4,12 +4,15 @@ import "./index.scss";
 
 function SubmenuLivros() {
   return (
-    <div className='submenu'>        
+
+    <div className='submenu'>  
+
         <ul>
             <li><Link to="/livros/cadastro">Cadastrar Livro</Link></li>
-        </ul>        
+        </ul>
+             
     </div>
-  )
-}
+  );
+};
 
 export default SubmenuLivros
