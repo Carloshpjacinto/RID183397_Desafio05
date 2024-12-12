@@ -9,9 +9,17 @@ const Livros = () => {
 
   const [livros, setLivros] = useState([])
 
+  const [id, setId] = useState(0)
+
   async function getLivros(){
 
     const {data} = await LivrosService.getLivros();
+    setLivros(data)
+  }
+
+  async function getLivroId(id){
+
+    const {data} = await LivrosService.getLivro(id);
     setLivros(data)
   }
 
@@ -31,14 +39,27 @@ const Livros = () => {
 
   useEffect(() => {
 
-    getLivros()    
+    if(id == 0){
 
-  },[livros])  
+      getLivros()
+
+    }else{
+
+      getLivroId(id)
+    }
+
+  },[livros])
 
   return (
   <>
-    <Header/>    
-    <SubmenuLivros/>
+    <Header/>
+    <div className='sessionButtomInput'>
+      <SubmenuLivros/>
+      <div className='labelInput'>
+        <label>Procurar livro por Id:</label>
+        <input type="number" id="inputId" placeholder='Id' onChange={(event) => setId(event.target.value)}/>
+      </div>
+    </div>
     <div className='livros'>
         <h1>Escolha o seu livro</h1>        
         <ul>
@@ -64,7 +85,6 @@ const Livros = () => {
             </div>
             </li>
         ))}
-
         </ul>
     </div>
   </>)
