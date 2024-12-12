@@ -14,4 +14,6 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg" width="40" height="40"/>
 </div>
 
-#### LINK do site disponibilizado:
+#### LINK do front-end disponibilizado: https://graceful-pothos-46407c.netlify.app/livros
+
+#### Para visualizar o back-end (API) em funcionamento, é necessário clonar o projeto, instalar as dependências do arquivo package.json (npm install), definir a porta do servidor (variável PORT presente no arquivo .env.example) e executar o comando npm run start.
