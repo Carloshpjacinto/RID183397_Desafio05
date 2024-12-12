@@ -1,32 +1,31 @@
 import axios from 'axios';
-import 'dotenv/config';
 
-const baseUrl = process.env.BASE_URL;
+const BASE_URL = "http://localhost:3000";
 
 export class LivrosService{
 
     static getLivros(){
 
-        return axios.get(baseUrl+'/livros');
+        return axios.get(BASE_URL+'/livros');
     }
 
     static getLivro(id){
 
-        return axios.get(`${baseUrl}/livros/${id}`);
+        return axios.get(`${BASE_URL}/livros/${id}`);
     }
 
     static createLivro(body){
 
-        return axios.post(`${baseUrl}/livros`,body);
+        return axios.post(`${BASE_URL}/livros`,body);
     }
 
     static updateLivro(id,body){
 
-        return axios.put(`${baseUrl}/livros/${id}`,body);
+        return axios.put(`${BASE_URL}/livros/${id}`,body);
     }
 
     static deleteLivro(id){
         
-        return axios.delete(`${baseUrl}/livros/${id}`);
+        return axios.delete(`${BASE_URL}/livros/${id}`);
     } 
 }
