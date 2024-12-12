@@ -13,7 +13,7 @@
 
         margin:30px;
         cursor: default;
-    }
+    };
 
     .form-group{
 
@@ -29,20 +29,21 @@
             font-size:12pt;
             border-radius: 5px;
             border: 1px solid #CCC;
-        }
+        };
+        
         label{
 
             margin:3px;
             font-weight: bold;
-        }
+        };
 
         #id{
 
             pointer-events:none;
             outline:none;
             background-color: rgba(123, 121, 121, 0.285);
-        }
-        
+        };
+
         button{
 
             margin:10px 0px;
@@ -55,11 +56,11 @@
             border-radius:5px;
             background-color: blue;
             cursor:pointer;
-        }
+        };
 
         button:hover{
 
             opacity: 0.7;
-        }
-    }  
-}
+        };
+    };
+};

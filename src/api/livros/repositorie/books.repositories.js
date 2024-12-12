@@ -1,4 +1,4 @@
-import { database } from "../../config/database/data-source.js"
+import { database } from "../../config/database/data-source.js";
 
 database.run(`CREATE TABLE IF NOT EXISTS books (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,9 +22,9 @@ function findAllBooksRepository(){
 
                 resolve(rows);
             }
-        })
-    })
-}
+        });
+    });
+};
 
 function findIdBooksRepository(idBook){
 
@@ -42,9 +42,9 @@ function findIdBooksRepository(idBook){
 
                 resolve(rows);
             }
-        })
-    })
-}
+        });
+    });
+};
     
 function createBooksRepository(newBook){
 
@@ -64,11 +64,11 @@ function createBooksRepository(newBook){
                 }else{
 
                     resolve(newBook);
-                }
+                };
             }
-        )
-    })
-}
+        );
+    });
+};
 
 function updateBooksRepository(idBook, book){
 
@@ -76,52 +76,52 @@ function updateBooksRepository(idBook, book){
 
         const {titulo, num_paginas, isbn, editora} = book
 
-        let query = "UPDATE books SET"
+        let query = "UPDATE books SET";
 
         const values = [];
 
         if(titulo != undefined){
 
             query += " titulo = ?,"
-            values.push(titulo)
+            values.push(titulo);
         }
 
         if(num_paginas != undefined){
 
             query += " num_paginas = ?,"
-            values.push(num_paginas)
+            values.push(num_paginas);
         }
 
         if(isbn != undefined){
 
             query += " isbn = ?,"
-            values.push(isbn)
+            values.push(isbn);
         }
 
         if(editora != undefined){
 
             query += " editora = ?,"
-            values.push(editora)
+            values.push(editora);
         }
 
         query = query.slice(0, -1)
 
         query += " WHERE id = ?"
-        values.push(Number(idBook))
+        values.push(Number(idBook));
 
         database.run(query, values, function(err){
 
             if(err){
 
-                reject(err)
+                reject(err);
 
             }else{
 
-                resolve(book)
+                resolve(book);
             }
-        })
-    })
-}
+        });
+    });
+};
 
 function deleteBooksRepository(idBook){
 
@@ -134,15 +134,15 @@ function deleteBooksRepository(idBook){
 
                 if(err){
 
-                    reject(err)
+                    reject(err);
 
                 }else{
 
-                    resolve({message: "Livro deletado com sucesso!"})
+                    resolve({message: "Livro deletado com sucesso!"});
                 }
             }
-        )
-    })
-}
+        );
+    });
+};
 
-export default {findAllBooksRepository, findIdBooksRepository, createBooksRepository, updateBooksRepository, deleteBooksRepository}
+export default {findAllBooksRepository, findIdBooksRepository, createBooksRepository, updateBooksRepository, deleteBooksRepository};

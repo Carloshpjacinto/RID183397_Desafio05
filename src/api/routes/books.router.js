@@ -1,11 +1,11 @@
 import booksController from "../livros/controller/books.controller.js";
-import { Router } from "express";
+import { Router } from 'express';
 
 const router = Router();
 
 router.get("/", booksController.findAllBooksController);
 
-router.get("/:id", booksController.findIdBooksController)
+router.get("/:id", booksController.findIdBooksController);
 
 router.post("/", booksController.createBooksController);
 

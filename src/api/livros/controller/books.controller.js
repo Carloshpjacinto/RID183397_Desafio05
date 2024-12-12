@@ -1,4 +1,4 @@
-import booksService from "../service/books.service.js"
+import booksService from "../service/books.service.js";
 
 async function findAllBooksController(req, res) {
     
@@ -10,9 +10,9 @@ async function findAllBooksController(req, res) {
 
     }catch(e){
 
-        res.status(404).send(message)
-    }
-}
+        res.status(404).send(message);
+    };
+};
 
 async function findIdBooksController(req, res) {
     
@@ -26,9 +26,9 @@ async function findIdBooksController(req, res) {
 
     }catch(e){
 
-        res.status(404).send(message)
-    }
-}
+        res.status(404).send(message);
+    };
+};
 
 async function createBooksController(req, res) {
 
@@ -38,13 +38,13 @@ async function createBooksController(req, res) {
 
         const response = await booksService.createBooksService(book);
 
-        res.send(response)
+        res.send(response);
 
     }catch(e){
 
-        res.status(400).send(e.message)
-    }
-}
+        res.status(400).send(e.message);
+    };
+};
 
 async function updateBooksController(req, res) {
 
@@ -56,13 +56,13 @@ async function updateBooksController(req, res) {
 
         const response = await booksService.updateBooksService(idBook, book);
 
-        res.send(response)
+        res.send(response);
 
     }catch(e){
 
-        res.status(400).send(e.message)
-    }
-}
+        res.status(400).send(e.message);
+    };
+};
 
 async function deleteBooksController(req, res) {
     
@@ -70,14 +70,14 @@ async function deleteBooksController(req, res) {
 
         const idBook = req.params.id;
 
-        await booksService.deleteBooksService(idBook)
+        await booksService.deleteBooksService(idBook);
     
-        res.status(200)
+        res.status(200);
 
     }catch(e){
 
-        res.status(400).send(e.message)
-    }
-}
+        res.status(400).send(e.message);
+    };
+};
 
-export default {findAllBooksController, findIdBooksController, createBooksController, updateBooksController, deleteBooksController}
+export default {findAllBooksController, findIdBooksController, createBooksController, updateBooksController, deleteBooksController};
