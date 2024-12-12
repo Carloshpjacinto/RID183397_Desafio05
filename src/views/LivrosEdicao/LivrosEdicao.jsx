@@ -36,7 +36,7 @@ const LivrosEdicao = () => {
         alert("Livro atualizado");
 
         window.document.getElementById("formulario").reset();
-        setLivro({titulo: '', num_paginas: '', isbn: '', editora: '' });
+        setLivro({id: id, titulo: '', num_paginas: '', isbn: '', editora: '' });
 
       }).catch((err)=>{
 
