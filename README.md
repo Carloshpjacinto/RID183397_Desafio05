@@ -1,6 +1,6 @@
 # DESAFIO 5 - Resolução.
 
-### Quinto desafio da Formação/Especialização Arquiteto de Software da Escola DNC.
+### Quinto desafio da pós-graduação/especialização em Arquitetura de Software da Escola DNC.
 
 ### Front-end para integração da API REST, clonado do repositório do professor Vitor Hugo.
 
